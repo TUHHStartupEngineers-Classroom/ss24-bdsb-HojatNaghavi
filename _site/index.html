@@ -8,7 +8,7 @@
 
 <meta name="author" content="Seyed Hojat Naghavi">
 
-<title>MyLabJournal - My Lab Journal</title>
+<title>MyLabJournal - My DS Lab Journal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -90,38 +90,38 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
-  </li>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
         <li>
     <a class="dropdown-item" href="./content/01_journal/01_tidyverse.html" rel="" target="">
  <span class="dropdown-text">01 Tidyverse</span></a>
-  </li>
+  </li>  
         <li>
     <a class="dropdown-item" href="./content/01_journal/02_data_acquisition.html" rel="" target="">
  <span class="dropdown-text">02 Data Acquisition</span></a>
-  </li>
+  </li>  
         <li>
     <a class="dropdown-item" href="./content/01_journal/03_data_wrangling.html" rel="" target="">
  <span class="dropdown-text">03 Data Wrangling</span></a>
-  </li>
+  </li>  
         <li>
     <a class="dropdown-item" href="./content/01_journal/04_data_visualization.html" rel="" target="">
  <span class="dropdown-text">04 Data Visualization</span></a>
-  </li>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="./content/02_notes/05_class_notes.html" rel="" target="">
  <span class="menu-text">Class notes</span></a>
-  </li>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./content/03_other/06_links.html" rel="" target="">
  <span class="menu-text">Links</span></a>
-  </li>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -134,13 +134,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Lab Journal</h1>
+<h1 class="title">My DS Lab Journal</h1>
 <p class="subtitle lead">Business Data Science Basics</p>
 </div>
 
@@ -151,14 +151,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Seyed Hojat Naghavi</p>
+             <p>Seyed Hojat Naghavi </p>
           </div>
   </div>
-
-
-
+    
+  
+    
   </div>
-
+  
 
 </header>
 
@@ -201,7 +201,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       toggleBodyColorMode(bsSheetEl);
     }
   }
-  toggleBodyColorPrimary();
+  toggleBodyColorPrimary();  
   const disableStylesheet = (stylesheets) => {
     for (let i=0; i < stylesheets.length; i++) {
       const stylesheet = stylesheets[i];
@@ -247,7 +247,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggle = toggles[i];
       if (toggle) {
         if (alternate) {
-          toggle.classList.add("alternate");
+          toggle.classList.add("alternate");     
         } else {
           toggle.classList.remove("alternate");
         }
@@ -261,13 +261,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       setTimeout(() => {
         window.scrollTo(0, 0);
         manageTransitions("body", true);
-      }, 40);
+      }, 40);  
     }
   }
-  const isFileUrl = () => {
+  const isFileUrl = () => { 
     return window.location.protocol === 'file:';
   }
-  const hasAlternateSentinel = () => {
+  const hasAlternateSentinel = () => {  
     let styleSentinel = getColorSchemeSentinel();
     if (styleSentinel !== null) {
       return styleSentinel === "alternate";
@@ -294,7 +294,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   let localAlternateSentinel = 'alternate';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value
+    // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
@@ -326,7 +326,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {
+      if (clz.startsWith('code-annotation-')) {                     
         return true;
       }
     }
@@ -357,11 +357,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
       button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button,
-        { trigger: "manual",
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
           offset: [0, -8]});
-      tooltip.show();
+      tooltip.show();    
     }
     setTimeout(function() {
       if (tooltip) {
@@ -391,7 +391,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       theme: 'quarto',
       placement: 'bottom-start'
     };
-    window.tippy(el, config);
+    window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
@@ -436,7 +436,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             height = bottom - top;
           }
           if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it
+            // cook up a div (if necessary) and position it 
             let div = window.document.getElementById("code-annotation-line-highlight");
             if (div === null) {
               div = window.document.createElement("div");
@@ -531,7 +531,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 

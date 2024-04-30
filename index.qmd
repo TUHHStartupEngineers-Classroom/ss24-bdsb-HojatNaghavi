@@ -1,5 +1,5 @@
 ---
-title: "My Lab Journal"
+title: "My DS Lab Journal"
 subtitle: "Business Data Science Basics"
 author: "Seyed Hojat Naghavi"
 ---
