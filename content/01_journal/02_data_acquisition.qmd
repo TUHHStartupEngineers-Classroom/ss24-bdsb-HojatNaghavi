@@ -1,8 +1,51 @@
 ---
 title: "Data Acquisition"
-author: "Joschka Schwarz"
+author: "Seyed Hojat Naghavi"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+## A Joke
+```{r}
+url = 'https://v2.jokeapi.dev/joke/Any?format=txt'
+
+library(tidyverse)
+library(rvest)
+html <- read_html(url)
+section <- html |> html_elements("p")
+section
+```
+
+## Video data
+```{r}
+url <- "https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"
+html <- read_html(url)
+
+table <- html |> 
+  html_element("table") |> 
+  html_table()
+
+ratings <- table |>
+  select(
+    rank_title_year = `Rank & Title`,
+    rating = `IMDb Rating`
+  ) |> 
+  mutate(
+    rank_title_year = str_replace_all(rank_title_year, "\n +", " ")
+  ) |> 
+  separate_wider_regex(
+    rank_title_year,
+    patterns = c(
+      rank = "\\d+", "\\. ",
+      title = ".+", " +\\(",
+      year = "\\d+", "\\)"
+    )
+  )
+ratings
+
+```
+
+```{r}
+html |> 
+  html_elements("td strong") |> 
+  head() |> 
+  html_attr("title")
+```
