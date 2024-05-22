@@ -1,8 +1,90 @@
 ---
 title: "Data Visualization"
-author: "Joschka Schwarz"
+author: "Seyed Hojat Naghavi"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r}
+library(tidyverse)
+library(lubridate)
+library(ggrepel)
+
+covid_data_tbl <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+
+covid = covid_data_tbl %>% select(continent, location, date, new_cases)
+
+european_countries <- c("France", "Germany", "Spain", "United Kingdom")
+covid_filtered = covid %>% filter(location %in% european_countries | location == "United States") %>% filter(date<'2022-04-19')
+
+covid_data_plot <- covid_filtered %>%
+  group_by(location, date) %>%
+  summarize(cumulative_cases = sum(new_cases, na.rm = TRUE)) %>%
+  mutate(cumulative_cases = cumsum(cumulative_cases))
+
+# Plot the data
+ggplot(covid_data_plot, aes(x = date, y = cumulative_cases, group = location, colour = location)) +
+  geom_line()+ #color = "#00BFC4") + 
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %y") +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Date", y = "Cumulative Cases", title = "COVID-19 confirmed cases worldwide") +
+  theme_minimal() +
+  geom_label_repel(
+    aes(label = ifelse(date == max(date), as.character(cumulative_cases), "")),
+    nudge_x = 300,
+    nudge_y = 3000,
+    size = 4
+  ) +
+  theme(axis.text.x = element_text(angle = 70, hjust = 1))
+
+
+
+
+```
+
+```{r}
+
+library(maps)
+
+world <- map_data("world")
+
+
+# Calculate mortality rate as deaths/population
+# due to memory limit, I only showed the selected countries
+#selected_countries <- c("France", "Germany", "United Kingdom", "China", "United States")
+selected_countries <- c("Germany")
+
+covid_data_f2 <- covid_data_tbl %>% 
+  filter(location %in% selected_countries  ) %>% 
+  filter(date<'2022-04-19') %>%
+  mutate(mortality_rate = total_deaths / population)
+
+covid_data_f2 <- covid_data_f2 %>%
+  mutate(location = case_when(
+    location == "United Kingdom" ~ "UK",
+    location == "United States" ~ "USA",
+    location == "Democratic Republic of Congo" ~ "Democratic Republic of the Congo",
+    TRUE ~ location
+  )) %>%
+  distinct()
+
+# Join the COVID-19 data with the world map data
+plot_data <- world %>%
+  left_join(covid_data_f2, by = c("region" = "location"))
+
+# Plot the data
+ggplot(plot_data) +
+  geom_map(aes(map_id = region, fill = mortality_rate), map = world) +
+  expand_limits(x = world$long, y = world$lat) +
+  scale_fill_continuous(low = "red", high = "black", na.value = "grey50", label = scales::percent) +
+  labs(fill = "Mortality Rate", title = "Confirmed COVID-19 Mortality") +
+  theme_minimal()
+
+
+```
+
+### Due to the following error, I couldn't map all the countries. I hope the above output could at least show my attempt.
+
+processing file: 04_data_visualization.qmd
+  |....................................................| 100% [unnamed-chunk-2]
+Quitting from lines  at lines 44-81 [unnamed-chunk-2] (04_data_visualization.qmd)
+Error in `lazyLoadDBinsertVariable()`:
+! long vectors not supported yet: /Volumes/Builds/R4/R-4.4.0/src/main/connections.c:6261

@@ -1,8 +1,121 @@
 ---
 title: "Data Wrangling"
-author: "Joschka Schwarz"
+author: "Seyed Hojat Naghavi"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+
+```{r}
+library(vroom)
+library(tidyverse)
+
+col_types <- list(
+  id = col_character(),
+  type = col_character(),
+  number = col_character(),
+  country = col_character(),
+  date = col_date("%Y-%m-%d"),
+  abstract = col_character(),
+  title = col_character(),
+  kind = col_character(),
+  num_claims = col_double(),
+  filename = col_character(),
+  withdrawn = col_double()
+)
+
+patent <- vroom(
+            file       = "../../../ds_data/patent.tsv", 
+            delim      = "\t", 
+            col_types  = col_types,
+            na         = c("", "NA", "NULL")
+        )
+
+col_types <- list(
+  id = col_character(),
+  type = col_character(),
+  organization = col_character()
+)
+
+assignee <- vroom(
+            file       = "../../../ds_data/assignee.tsv", 
+            delim      = "\t", 
+            col_types  = col_types,
+            na         = c("", "NA", "NULL")
+        )
+
+col_types <- list(
+  patent_id = col_character(),
+  assignee_id = col_character()
+)
+
+patent_assignee <- vroom(
+            file       = "../../../ds_data/patent_assignee.tsv", 
+            delim      = "\t", 
+            col_types  = col_types,
+            na         = c("", "NA", "NULL")
+        )
+
+col_types <- list(
+  patent_id = col_character(),
+  mainclass_id = col_character(),
+  sequence = col_character()
+)
+
+uspc <- vroom(
+            file       = "../../../ds_data/uspc.tsv", 
+            delim      = "\t", 
+            col_types  = col_types,
+            na         = c("", "NA", "NULL")
+        )
+
+```
+
+## 1
+```{r}
+patent_assignee_organization <- patent_assignee %>%
+        left_join(assignee, by = c("assignee_id" = "id")) 
+
+no_of_patients_organizations = patent_assignee_organization %>% group_by(organization) %>% summarize(no_patents = n())
+
+no_of_patients_organizations = no_of_patients_organizations %>% arrange(desc(no_patents))
+
+```
+
+## 2
+```{r}
+all_patents_august = patent_assignee_organization %>% left_join(patent, by = c("patent_id" = "id")) %>% separate(col    = date,
+         into   = c("year", "month", "day"),
+         sep    = "-") %>% filter(month == '08') 
+
+all_patents_august_grouped = all_patents_august %>% group_by(organization) %>% summarize(no_patents = n()) %>%  arrange(desc(no_patents))
+
+top10 = top_n(all_patents_august_grouped, 10)
+top10$organization = as.factor(top10$organization)
+
+ggplot(top10 , aes(x = reorder(organization, desc(no_patents)), y = no_patents)) + geom_col() + 
+  labs(
+  title    = "Top 10 companies in August",
+  x = "",
+  y = "No of Patents"
+) + theme(axis.text.x = element_text(angle = 80, hjust = 1))
+
+```
+
+## 3
+```{r}
+
+top10 = top_n(no_of_patients_organizations, 10)
+
+patent_assignee_organization <- patent_assignee %>%
+        left_join(assignee, by = c("assignee_id" = "id")) %>%
+        left_join(uspc, by = c("patent_id" = "patent_id")) 
+
+no_of_patients_organizations = patent_assignee_organization %>% 
+  filter(organization %in% top10$organization) %>% 
+  group_by(mainclass_id) %>% 
+  summarize(no_patents = n()) 
+
+top5 = no_of_patients_organizations %>% arrange(desc(no_patents)) %>% top_n(5)
+
+top5
+
+```
