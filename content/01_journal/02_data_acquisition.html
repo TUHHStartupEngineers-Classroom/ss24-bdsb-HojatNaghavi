@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Seyed Hojat Naghavi">
-
 <title>MyLabJournal - Data Acquisition</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -42,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +91,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +117,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html" rel="" target="">
  <span class="dropdown-text">01 Tidyverse</span></a>
   </li>  
@@ -110,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">04 Data Visualization</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item">
     <a class="nav-link" href="../../content/02_notes/05_class_notes.html" rel="" target="">
  <span class="menu-text">Class notes</span></a>
@@ -120,25 +145,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#a-joke" id="toc-a-joke" class="nav-link active" data-scroll-target="#a-joke"><span class="header-section-number">1</span> A Joke</a></li>
+  <li><a href="#video-data" id="toc-video-data" class="nav-link" data-scroll-target="#video-data"><span class="header-section-number">2</span> Video data</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Data Acquisition</h1>
 </div>
 
@@ -158,13 +182,91 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="a-joke" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="a-joke">
+<span class="header-section-number">1</span> A Joke</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_f16940a9b9505d237e9a7a8ab942d8e7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>url <span class="ot">=</span> <span class="st">'https://v2.jokeapi.dev/joke/Any?format=txt'</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5
+#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1
+#&gt; ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+#&gt; ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+#&gt; ✔ purrr     1.0.2     
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()
+#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(rvest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'rvest'
+#&gt; 
+#&gt; The following object is masked from 'package:readr':
+#&gt; 
+#&gt;     guess_encoding</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>section <span class="ot">&lt;-</span> html <span class="sc">|&gt;</span> <span class="fu">html_elements</span>(<span class="st">"p"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>section</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; {xml_nodeset (1)}
+#&gt; [1] &lt;p&gt;I stayed up all night wondering where the sun went.\n\nThen it dawned  ...</code></pre>
+</div>
+</div>
+</section><section id="video-data" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="video-data">
+<span class="header-section-number">2</span> Video data</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_c6965148562c01da9c5175a93b690718">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>table <span class="ot">&lt;-</span> html <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">html_element</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>ratings <span class="ot">&lt;-</span> table <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">select</span>(</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="at">rank_title_year =</span> <span class="st">`</span><span class="at">Rank &amp; Title</span><span class="st">`</span>,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="at">rating =</span> <span class="st">`</span><span class="at">IMDb Rating</span><span class="st">`</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="at">rank_title_year =</span> <span class="fu">str_replace_all</span>(rank_title_year, <span class="st">"</span><span class="sc">\n</span><span class="st"> +"</span>, <span class="st">" "</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="fu">separate_wider_regex</span>(</span>
+<span id="cb7-17"><a href="#cb7-17"></a>    rank_title_year,</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    <span class="at">patterns =</span> <span class="fu">c</span>(</span>
+<span id="cb7-19"><a href="#cb7-19"></a>      <span class="at">rank =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">. "</span>,</span>
+<span id="cb7-20"><a href="#cb7-20"></a>      <span class="at">title =</span> <span class="st">".+"</span>, <span class="st">" +</span><span class="sc">\\</span><span class="st">("</span>,</span>
+<span id="cb7-21"><a href="#cb7-21"></a>      <span class="at">year =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">)"</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a>    )</span>
+<span id="cb7-23"><a href="#cb7-23"></a>  )</span>
+<span id="cb7-24"><a href="#cb7-24"></a>ratings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["title"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rating"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"The Shawshank Redemption","3":"1994","4":"9.2"},{"1":"2","2":"The Godfather","3":"1972","4":"9.1"},{"1":"3","2":"The Godfather: Part II","3":"1974","4":"9.0"},{"1":"4","2":"The Dark Knight","3":"2008","4":"9.0"},{"1":"5","2":"12 Angry Men","3":"1957","4":"8.9"},{"1":"6","2":"Schindler's List","3":"1993","4":"8.9"},{"1":"7","2":"The Lord of the Rings: The Return of the King","3":"2003","4":"8.9"},{"1":"8","2":"Pulp Fiction","3":"1994","4":"8.8"},{"1":"9","2":"The Good, the Bad and the Ugly","3":"1966","4":"8.8"},{"1":"10","2":"The Lord of the Rings: The Fellowship of the Ring","3":"2001","4":"8.8"},{"1":"11","2":"Fight Club","3":"1999","4":"8.7"},{"1":"12","2":"Forrest Gump","3":"1994","4":"8.7"},{"1":"13","2":"Inception","3":"2010","4":"8.7"},{"1":"14","2":"The Lord of the Rings: The Two Towers","3":"2002","4":"8.7"},{"1":"15","2":"Star Wars: Episode V - The Empire Strikes Back","3":"1980","4":"8.7"},{"1":"16","2":"The Matrix","3":"1999","4":"8.7"},{"1":"17","2":"Goodfellas","3":"1990","4":"8.6"},{"1":"18","2":"One Flew Over the Cuckoo's Nest","3":"1975","4":"8.6"},{"1":"19","2":"Seven Samurai","3":"1954","4":"8.6"},{"1":"20","2":"Se7en","3":"1995","4":"8.6"},{"1":"21","2":"The Silence of the Lambs","3":"1991","4":"8.6"},{"1":"22","2":"City of God","3":"2002","4":"8.6"},{"1":"23","2":"It's a Wonderful Life","3":"1946","4":"8.6"},{"1":"24","2":"Life Is Beautiful","3":"1997","4":"8.6"},{"1":"25","2":"Spider-Man: No Way Home","3":"2021","4":"8.6"},{"1":"26","2":"Saving Private Ryan","3":"1998","4":"8.6"},{"1":"27","2":"Star Wars: Episode IV - A New Hope","3":"1977","4":"8.5"},{"1":"28","2":"Interstellar","3":"2014","4":"8.5"},{"1":"29","2":"Spirited Away","3":"2001","4":"8.5"},{"1":"30","2":"The Green Mile","3":"1999","4":"8.5"},{"1":"31","2":"Parasite","3":"2019","4":"8.5"},{"1":"32","2":"Léon: The Professional","3":"1994","4":"8.5"},{"1":"33","2":"Hara-Kiri","3":"1962","4":"8.5"},{"1":"34","2":"The Pianist","3":"2002","4":"8.5"},{"1":"35","2":"Terminator 2: Judgment Day","3":"1991","4":"8.5"},{"1":"36","2":"Back to the Future","3":"1985","4":"8.5"},{"1":"37","2":"The Usual Suspects","3":"1995","4":"8.5"},{"1":"38","2":"Psycho","3":"1960","4":"8.5"},{"1":"39","2":"The Lion King","3":"1994","4":"8.5"},{"1":"40","2":"Modern Times","3":"1936","4":"8.5"},{"1":"41","2":"Grave of the Fireflies","3":"1988","4":"8.5"},{"1":"42","2":"American History X","3":"1998","4":"8.5"},{"1":"43","2":"Whiplash","3":"2014","4":"8.5"},{"1":"44","2":"Gladiator","3":"2000","4":"8.5"},{"1":"45","2":"City Lights","3":"1931","4":"8.5"},{"1":"46","2":"The Departed","3":"2006","4":"8.5"},{"1":"47","2":"The Intouchables","3":"2011","4":"8.5"},{"1":"48","2":"The Prestige","3":"2006","4":"8.5"},{"1":"49","2":"Casablanca","3":"1942","4":"8.4"},{"1":"50","2":"Once Upon a Time in the West","3":"1968","4":"8.4"},{"1":"51","2":"Rear Window","3":"1954","4":"8.4"},{"1":"52","2":"Cinema Paradiso","3":"1988","4":"8.4"},{"1":"53","2":"Alien","3":"1979","4":"8.4"},{"1":"54","2":"Apocalypse Now","3":"1979","4":"8.4"},{"1":"55","2":"Memento","3":"2000","4":"8.4"},{"1":"56","2":"Indiana Jones and the Raiders of the Lost Ark","3":"1981","4":"8.4"},{"1":"57","2":"The Great Dictator","3":"1940","4":"8.4"},{"1":"58","2":"Django Unchained","3":"2012","4":"8.4"},{"1":"59","2":"The Lives of Others","3":"2006","4":"8.4"},{"1":"60","2":"Paths of Glory","3":"1957","4":"8.4"},{"1":"61","2":"Sunset Blvd.","3":"1950","4":"8.4"},{"1":"62","2":"WALL·E","3":"2008","4":"8.4"},{"1":"63","2":"Avengers: Infinity War","3":"2018","4":"8.4"},{"1":"64","2":"Witness for the Prosecution","3":"1957","4":"8.4"},{"1":"65","2":"Spider-Man: Into the Spider-Verse","3":"2018","4":"8.4"},{"1":"66","2":"The Shining","3":"1980","4":"8.4"},{"1":"67","2":"Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb","3":"1964","4":"8.4"},{"1":"68","2":"Princess Mononoke","3":"1997","4":"8.3"},{"1":"69","2":"Oldboy","3":"2003","4":"8.3"},{"1":"70","2":"Joker","3":"2019","4":"8.3"},{"1":"71","2":"Your Name.","3":"2016","4":"8.3"},{"1":"72","2":"Coco","3":"2017","4":"8.3"},{"1":"73","2":"The Dark Knight Rises","3":"2012","4":"8.3"},{"1":"74","2":"Aliens","3":"1986","4":"8.3"},{"1":"75","2":"Once Upon a Time in America","3":"1984","4":"8.3"},{"1":"76","2":"Avengers: Endgame","3":"2019","4":"8.3"},{"1":"77","2":"Capernaum","3":"2018","4":"8.3"},{"1":"78","2":"Das Boot","3":"1981","4":"8.3"},{"1":"79","2":"High and Low","3":"1963","4":"8.3"},{"1":"80","2":"3 Idiots","3":"2009","4":"8.3"},{"1":"81","2":"Toy Story","3":"1995","4":"8.3"},{"1":"82","2":"Amadeus","3":"1984","4":"8.3"},{"1":"83","2":"American Beauty","3":"1999","4":"8.3"},{"1":"84","2":"Braveheart","3":"1995","4":"8.3"},{"1":"85","2":"Inglourious Basterds","3":"2009","4":"8.3"},{"1":"86","2":"Good Will Hunting","3":"1997","4":"8.3"},{"1":"87","2":"Hamilton","3":"2020","4":"8.3"},{"1":"88","2":"Star Wars: Episode VI - Return of the Jedi","3":"1983","4":"8.3"},{"1":"89","2":"Come and See","3":"1985","4":"8.3"},{"1":"90","2":"2001: A Space Odyssey","3":"1968","4":"8.3"},{"1":"91","2":"Reservoir Dogs","3":"1992","4":"8.3"},{"1":"92","2":"Like Stars on Earth","3":"2007","4":"8.3"},{"1":"93","2":"Vertigo","3":"1958","4":"8.3"},{"1":"94","2":"M","3":"1931","4":"8.3"},{"1":"95","2":"The Hunt","3":"2012","4":"8.3"},{"1":"96","2":"Citizen Kane","3":"1941","4":"8.3"},{"1":"97","2":"Requiem for a Dream","3":"2000","4":"8.3"},{"1":"98","2":"Singin' in the Rain","3":"1952","4":"8.3"},{"1":"99","2":"North by Northwest","3":"1959","4":"8.3"},{"1":"100","2":"Eternal Sunshine of the Spotless Mind","3":"2004","4":"8.3"},{"1":"101","2":"Ikiru","3":"1952","4":"8.3"},{"1":"102","2":"Bicycle Thieves","3":"1948","4":"8.3"},{"1":"103","2":"Lawrence of Arabia","3":"1962","4":"8.3"},{"1":"104","2":"The Kid","3":"1921","4":"8.2"},{"1":"105","2":"Full Metal Jacket","3":"1987","4":"8.2"},{"1":"106","2":"Incendies","3":"2010","4":"8.2"},{"1":"107","2":"The Apartment","3":"1960","4":"8.2"},{"1":"108","2":"Dangal","3":"2016","4":"8.2"},{"1":"109","2":"Double Indemnity","3":"1944","4":"8.2"},{"1":"110","2":"Metropolis","3":"1927","4":"8.2"},{"1":"111","2":"A Separation","3":"2011","4":"8.2"},{"1":"112","2":"The Father","3":"2020","4":"8.2"},{"1":"113","2":"Taxi Driver","3":"1976","4":"8.2"},{"1":"114","2":"A Clockwork Orange","3":"1971","4":"8.2"},{"1":"115","2":"The Sting","3":"1973","4":"8.2"},{"1":"116","2":"Scarface","3":"1983","4":"8.2"},{"1":"117","2":"Snatch","3":"2000","4":"8.2"},{"1":"118","2":"1917","3":"2019","4":"8.2"},{"1":"119","2":"Amélie","3":"2001","4":"8.2"},{"1":"120","2":"To Kill a Mockingbird","3":"1962","4":"8.2"},{"1":"121","2":"Toy Story 3","3":"2010","4":"8.2"},{"1":"122","2":"For a Few Dollars More","3":"1965","4":"8.2"},{"1":"123","2":"Up","3":"2009","4":"8.2"},{"1":"124","2":"Pather Panchali","3":"1955","4":"8.2"},{"1":"125","2":"Indiana Jones and the Last Crusade","3":"1989","4":"8.2"},{"1":"126","2":"Heat","3":"1995","4":"8.2"},{"1":"127","2":"L.A. Confidential","3":"1997","4":"8.2"},{"1":"128","2":"Ran","3":"1985","4":"8.2"},{"1":"129","2":"Yojimbo","3":"1961","4":"8.2"},{"1":"130","2":"Die Hard","3":"1988","4":"8.2"},{"1":"131","2":"Green Book","3":"2018","4":"8.2"},{"1":"132","2":"Rashomon","3":"1950","4":"8.2"},{"1":"133","2":"Downfall","3":"2004","4":"8.2"},{"1":"134","2":"All About Eve","3":"1950","4":"8.2"},{"1":"135","2":"Monty Python and the Holy Grail","3":"1975","4":"8.2"},{"1":"136","2":"Some Like It Hot","3":"1959","4":"8.2"},{"1":"137","2":"Batman Begins","3":"2005","4":"8.2"},{"1":"138","2":"Unforgiven","3":"1992","4":"8.2"},{"1":"139","2":"Children of Heaven","3":"1997","4":"8.2"},{"1":"140","2":"Jai Bhim","3":"2021","4":"8.2"},{"1":"141","2":"Howl's Moving Castle","3":"2004","4":"8.2"},{"1":"142","2":"The Wolf of Wall Street","3":"2013","4":"8.2"},{"1":"143","2":"Judgment at Nuremberg","3":"1961","4":"8.2"},{"1":"144","2":"There Will Be Blood","3":"2007","4":"8.2"},{"1":"145","2":"Casino","3":"1995","4":"8.2"},{"1":"146","2":"The Great Escape","3":"1963","4":"8.2"},{"1":"147","2":"The Treasure of the Sierra Madre","3":"1948","4":"8.2"},{"1":"148","2":"Pan's Labyrinth","3":"2006","4":"8.1"},{"1":"149","2":"A Beautiful Mind","3":"2001","4":"8.1"},{"1":"150","2":"The Secret in Their Eyes","3":"2009","4":"8.1"},{"1":"151","2":"Raging Bull","3":"1980","4":"8.1"},{"1":"152","2":"Chinatown","3":"1974","4":"8.1"},{"1":"153","2":"My Neighbor Totoro","3":"1988","4":"8.1"},{"1":"154","2":"Shutter Island","3":"2010","4":"8.1"},{"1":"155","2":"Lock, Stock and Two Smoking Barrels","3":"1998","4":"8.1"},{"1":"156","2":"No Country for Old Men","3":"2007","4":"8.1"},{"1":"157","2":"Klaus","3":"2019","4":"8.1"},{"1":"158","2":"Dial M for Murder","3":"1954","4":"8.1"},{"1":"159","2":"The Thing","3":"1982","4":"8.1"},{"1":"160","2":"The Gold Rush","3":"1925","4":"8.1"},{"1":"161","2":"Three Billboards Outside Ebbing, Missouri","3":"2017","4":"8.1"},{"1":"162","2":"The Seventh Seal","3":"1957","4":"8.1"},{"1":"163","2":"The Elephant Man","3":"1980","4":"8.1"},{"1":"164","2":"Dersu Uzala","3":"1975","4":"8.1"},{"1":"165","2":"The Sixth Sense","3":"1999","4":"8.1"},{"1":"166","2":"The Truman Show","3":"1998","4":"8.1"},{"1":"167","2":"Jurassic Park","3":"1993","4":"8.1"},{"1":"168","2":"Wild Strawberries","3":"1957","4":"8.1"},{"1":"169","2":"The Third Man","3":"1949","4":"8.1"},{"1":"170","2":"Memories of Murder","3":"2003","4":"8.1"},{"1":"171","2":"V for Vendetta","3":"2005","4":"8.1"},{"1":"172","2":"Blade Runner","3":"1982","4":"8.1"},{"1":"173","2":"Trainspotting","3":"1996","4":"8.1"},{"1":"174","2":"Fargo","3":"1996","4":"8.1"},{"1":"175","2":"The Bridge on the River Kwai","3":"1957","4":"8.1"},{"1":"176","2":"Inside Out","3":"2015","4":"8.1"},{"1":"177","2":"Finding Nemo","3":"2003","4":"8.1"},{"1":"178","2":"Kill Bill: Vol. 1","3":"2003","4":"8.1"},{"1":"179","2":"Warrior","3":"2011","4":"8.1"},{"1":"180","2":"Gone with the Wind","3":"1939","4":"8.1"},{"1":"181","2":"Tokyo Story","3":"1953","4":"8.1"},{"1":"182","2":"On the Waterfront","3":"1954","4":"8.1"},{"1":"183","2":"My Father and My Son","3":"2005","4":"8.1"},{"1":"184","2":"Wild Tales","3":"2014","4":"8.1"},{"1":"185","2":"Prisoners","3":"2013","4":"8.1"},{"1":"186","2":"Stalker","3":"1979","4":"8.1"},{"1":"187","2":"The Grand Budapest Hotel","3":"2014","4":"8.1"},{"1":"188","2":"The Deer Hunter","3":"1978","4":"8.1"},{"1":"189","2":"The General","3":"1926","4":"8.1"},{"1":"190","2":"Persona","3":"1966","4":"8.1"},{"1":"191","2":"Gran Torino","3":"2008","4":"8.1"},{"1":"192","2":"Sherlock Jr.","3":"1924","4":"8.1"},{"1":"193","2":"Before Sunrise","3":"1995","4":"8.1"},{"1":"194","2":"Mary and Max","3":"2009","4":"8.1"},{"1":"195","2":"Catch Me If You Can","3":"2002","4":"8.1"},{"1":"196","2":"Mr. Smith Goes to Washington","3":"1939","4":"8.1"},{"1":"197","2":"Barry Lyndon","3":"1975","4":"8.1"},{"1":"198","2":"In the Name of the Father","3":"1993","4":"8.1"},{"1":"199","2":"Dune","3":"2021","4":"8.1"},{"1":"200","2":"Hacksaw Ridge","3":"2016","4":"8.1"},{"1":"201","2":"Z","3":"1969","4":"8.1"},{"1":"202","2":"Gone Girl","3":"2014","4":"8.1"},{"1":"203","2":"Room","3":"2015","4":"8.1"},{"1":"204","2":"The Passion of Joan of Arc","3":"1928","4":"8.1"},{"1":"205","2":"Andhadhun","3":"2018","4":"8.1"},{"1":"206","2":"Ford v Ferrari","3":"2019","4":"8.1"},{"1":"207","2":"12 Years a Slave","3":"2013","4":"8.1"},{"1":"208","2":"To Be or Not to Be","3":"1942","4":"8.1"},{"1":"209","2":"The Big Lebowski","3":"1998","4":"8.1"},{"1":"210","2":"Dead Poets Society","3":"1989","4":"8.1"},{"1":"211","2":"Harry Potter and the Deathly Hallows: Part 2","3":"2011","4":"8.1"},{"1":"212","2":"Ben-Hur","3":"1959","4":"8.1"},{"1":"213","2":"How to Train Your Dragon","3":"2010","4":"8.1"},{"1":"214","2":"Mad Max: Fury Road","3":"2015","4":"8.1"},{"1":"215","2":"Autumn Sonata","3":"1978","4":"8.1"},{"1":"216","2":"Million Dollar Baby","3":"2004","4":"8.1"},{"1":"217","2":"The Wages of Fear","3":"1953","4":"8.1"},{"1":"218","2":"Stand by Me","3":"1986","4":"8.1"},{"1":"219","2":"The Handmaiden","3":"2016","4":"8.1"},{"1":"220","2":"Network","3":"1976","4":"8.1"},{"1":"221","2":"Logan","3":"2017","4":"8.1"},{"1":"222","2":"A Silent Voice: The Movie","3":"2016","4":"8.1"},{"1":"223","2":"La Haine","3":"1995","4":"8.1"},{"1":"224","2":"Hachi: A Dog's Tale","3":"2009","4":"8.0"},{"1":"225","2":"Cool Hand Luke","3":"1967","4":"8.0"},{"1":"226","2":"Gangs of Wasseypur","3":"2012","4":"8.0"},{"1":"227","2":"The 400 Blows","3":"1959","4":"8.0"},{"1":"228","2":"Platoon","3":"1986","4":"8.0"},{"1":"229","2":"Spotlight","3":"2015","4":"8.0"},{"1":"230","2":"Monsters, Inc.","3":"2001","4":"8.0"},{"1":"231","2":"Rebecca","3":"1940","4":"8.0"},{"1":"232","2":"Life of Brian","3":"1979","4":"8.0"},{"1":"233","2":"In the Mood for Love","3":"2000","4":"8.0"},{"1":"234","2":"Hotel Rwanda","3":"2004","4":"8.0"},{"1":"235","2":"The Bandit","3":"1996","4":"8.0"},{"1":"236","2":"Rush","3":"2013","4":"8.0"},{"1":"237","2":"Rocky","3":"1976","4":"8.0"},{"1":"238","2":"Amores perros","3":"2000","4":"8.0"},{"1":"239","2":"Into the Wild","3":"2007","4":"8.0"},{"1":"240","2":"Nausicaä of the Valley of the Wind","3":"1984","4":"8.0"},{"1":"241","2":"Demon Slayer: Mugen Train","3":"2020","4":"8.0"},{"1":"242","2":"Before Sunset","3":"2004","4":"8.0"},{"1":"243","2":"It Happened One Night","3":"1934","4":"8.0"},{"1":"244","2":"Fanny and Alexander","3":"1982","4":"8.0"},{"1":"245","2":"Drishyam","3":"2013","4":"8.0"},{"1":"246","2":"The Battle of Algiers","3":"1966","4":"8.0"},{"1":"247","2":"Nights of Cabiria","3":"1957","4":"8.0"},{"1":"248","2":"Miracle in Cell No. 7","3":"2019","4":"8.0"},{"1":"249","2":"Andrei Rublev","3":"1966","4":"8.0"},{"1":"250","2":"The Princess Bride","3":"1987","4":"8.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_fd797ac3357e68be442a8e676950527d">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>html <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">html_elements</span>(<span class="st">"td strong"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">html_attr</span>(<span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "9.2 based on 2,536,415 user ratings" "9.1 based on 1,745,675 user ratings"
+#&gt; [3] "9.0 based on 1,211,032 user ratings" "9.0 based on 2,486,931 user ratings"
+#&gt; [5] "8.9 based on 749,563 user ratings"   "8.9 based on 1,295,705 user ratings"</code></pre>
+</div>
+</div>
 
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
